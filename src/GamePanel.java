@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 	public static final int offset = 10;
 
 	public static String userColor = "";
-	
+
 	public static boolean playerTurn;
 
 	public static int tempPieceIdx = 0;
@@ -29,17 +29,19 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 
 	public static Piece rightRook;
 	public static Piece leftRook;
-	
+
 	public static Piece computerLeftRook;
 	public static Piece computerRightRook;
 	
+	public static Piece computerSaveCheckMovePiece = null;
+	public static Square computerSaveCheckMoveToSquare = null;
 	
 
 	private boolean pieceClickedBoolean = false;
 
 	public static Piece[] blackPieces = new Piece[16];
 	public static Piece[] whitePieces = new Piece[16];
-	
+
 	private boolean computerDone;
 
 	public static ArrayList<Piece> piecesComputerTook = new ArrayList<Piece>();
@@ -66,7 +68,7 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 			userColor = JOptionPane.showInputDialog("Enter White or Black to indicate your color: ");
 
 		}
-		
+
 		computerDone = true;
 
 		initializeSquareArray();
@@ -161,10 +163,9 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 
 			rightRook = whitePieces[15];
 			leftRook = whitePieces[8];
-			
+
 			computerRightRook = blackPieces[7];
 			computerLeftRook = blackPieces[0];
-			
 
 		} else if (userColor.equalsIgnoreCase("Black")) {
 
@@ -203,7 +204,7 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 
 			rightRook = blackPieces[15];
 			leftRook = blackPieces[8];
-			
+
 			computerRightRook = whitePieces[7];
 			computerLeftRook = whitePieces[0];
 
@@ -242,7 +243,6 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 
-		
 		if (playerTurn == true) {
 			computerDone = true;
 			if (pieceClickedBoolean == false) {
@@ -285,8 +285,8 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 							playerTurn = false;
 							RuleCheckAll ruleCheck = new RuleCheckAll();
 							if (userColor.equalsIgnoreCase("White")) {
-								if (false == ruleCheck.checkPlayerPossibilities(tempPiece, squares[i][j],
-										rightRook, leftRook, "User")) {
+								if (false == ruleCheck.checkPlayerPossibilities(tempPiece, squares[i][j], rightRook,
+										leftRook, "User")) {
 									playerTurn = true;
 									JOptionPane.showMessageDialog(null, "Invalid Move.");
 								} else {
@@ -298,8 +298,8 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 									c.run();
 								}
 							} else if (userColor.equalsIgnoreCase("Black")) {
-								if (false == ruleCheck.checkPlayerPossibilities(tempPiece, squares[i][j],
-										rightRook, leftRook, "User")) {
+								if (false == ruleCheck.checkPlayerPossibilities(tempPiece, squares[i][j], rightRook,
+										leftRook, "User")) {
 									playerTurn = true;
 									JOptionPane.showMessageDialog(null, "Invalid Move.");
 								} else {
@@ -326,11 +326,137 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 
 		{
 			JOptionPane.showMessageDialog(null, "Please Wait for Computer to Make Move.");
-			if(computerDone == true) {
+			if (computerDone == true) {
 				c.run();
 				computerDone = false;
 			}
 		}
+
+	}
+
+	public boolean checkUserHasCheckmate(Piece[] whitePieces, Piece[] blackPieces) {
+		ArrayList<RuleCheckAll> rules = new ArrayList<RuleCheckAll>();
+		int counter = 0;
+
+		if (userColor.equalsIgnoreCase("White")) {
+			for (int i = 0; i < whitePieces.length; i++) {
+				for (int j = 0; j < 8; j++) {
+					for (int j2 = 0; j2 < 8; j2++) {
+						rules.add(new RuleCheckAll());
+						if (rules.get(counter).checkPlayerPossibilities(whitePieces[i], GamePanel.squares[j][j2],
+								rightRook, leftRook, "User")) {
+							counter++;
+						} else {
+							rules.remove(rules.size() - 1);
+						}
+					}
+				}
+			}
+
+		} else if (userColor.equalsIgnoreCase("Black")) {
+			for (int i = 0; i < blackPieces.length; i++) {
+				for (int j = 0; j < 8; j++) {
+					for (int j2 = 0; j2 < 8; j2++) {
+						rules.add(new RuleCheckAll());
+						if (rules.get(counter).checkPlayerPossibilities(blackPieces[i], GamePanel.squares[j][j2],
+								rightRook, leftRook, "User")) {
+							counter++;
+						} else {
+							rules.remove(rules.size() - 1);
+						}
+					}
+				}
+			}
+		}
+		
+		Piece checkingPiece = null;
+		
+		boolean check = false;
+		// checks stuff with possibility data with king being 10000 in value
+		for (int i = 0; i < rules.size(); i++) {
+			if (rules.get(i).getValueAdded() == 10000) {
+				check = true;
+				checkingPiece = rules.get(i).getPieceMoved();
+			}
+		}
+
+		if (check) {
+			ArrayList<RuleCheckAll> computerRules = new ArrayList<RuleCheckAll>();
+
+			
+			int counter2 = 0;
+
+			if (!userColor.equalsIgnoreCase("White")) {
+				for (int i = 0; i < whitePieces.length; i++) {
+					for (int j = 0; j < 8; j++) {
+						for (int j2 = 0; j2 < 8; j2++) {
+							computerRules.add(new RuleCheckAll());
+							if (computerRules.get(counter2).checkPlayerPossibilities(whitePieces[i], GamePanel.squares[j][j2],
+									rightRook, leftRook, "Computer")) {
+								counter2++;
+							} else {
+								computerRules.remove(rules.size() - 1);
+							}
+						}
+					}
+				}
+
+			} else if (!userColor.equalsIgnoreCase("Black")) {
+				for (int i = 0; i < blackPieces.length; i++) {
+					for (int j = 0; j < 8; j++) {
+						for (int j2 = 0; j2 < 8; j2++) {
+							computerRules.add(new RuleCheckAll());
+							if (computerRules.get(counter2).checkPlayerPossibilities(blackPieces[i], GamePanel.squares[j][j2],
+									rightRook, leftRook, "Computer")) {
+								counter2++;
+							} else {
+								computerRules.remove(rules.size() - 1);
+							}
+						}
+					}
+				}
+			}
+			//check if computer can take the user checking piece
+			for (int i = 0; i < computerRules.size(); i++) {
+				if(computerRules.get(i).getPieceRemoved()==checkingPiece) {
+					computerSaveCheckMovePiece=computerRules.get(i).getPieceMoved();
+					computerSaveCheckMoveToSquare=computerRules.get(i).getSquareMovedTo();
+					return false;
+				}
+			}
+			//check if the computer can put a piece in the way (move all the pieces and then call RuleCheckAll once to see if ) DIFFICULT!!
+			
+			
+			
+			
+			
+			
+			//check if the computer can move the king to a square which is not threatened.
+			
+			for (int i = 0; i < computerRules.size(); i++) {
+				if(computerRules.get(i).getPieceMoved().getSource().contains("King")) {
+					
+					Square safeSquare = computerRules.get(i).getSquareMovedTo();
+					//checks to see if user can move a piece to the safeSquare.
+					boolean canMove = true;
+					for (int j = 0; j < rules.size(); j++) {
+						if(rules.get(i).getSquareMovedTo() == safeSquare) {
+							canMove = false;
+						}
+					}
+					if(canMove == true) {
+						computerSaveCheckMovePiece = computerRules.get(i).getPieceMoved();
+						computerSaveCheckMoveToSquare = computerRules.get(i).getSquareMovedTo();
+						return false;
+					}
+					
+				}
+			}
+			
+			
+			
+		}
+		return true;
 
 	}
 
