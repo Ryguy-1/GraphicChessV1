@@ -34,14 +34,16 @@ public class ComputerTurn {
 			copyWhitePieces[i].setValue(GamePanel.whitePieces[i].getValue());
 		}
 		
+		System.out.println("Computer Ran");
+		
 		
 		ArrayList<RuleCheckAll> rules = new ArrayList<RuleCheckAll>();
 		//ArrayList<Boolean> numbers = new ArrayList<Boolean>();
 		//rules and numbers indices line up.
 		int counter = 0;
 		if(!GamePanel.userColor.equalsIgnoreCase("White")) {
-			Piece rightRook = copyWhitePieces[7];
-			Piece leftRook = copyBlackPieces[0];
+			Piece rightRook = GamePanel.computerRightRook;
+			Piece leftRook = GamePanel.computerLeftRook;
 			for (int i = 0; i < copyWhitePieces.length; i++) {
 				for (int j = 0; j < 8; j++) {
 					for (int j2 = 0; j2 < 8; j2++) {    
@@ -58,6 +60,24 @@ public class ComputerTurn {
 				}
 			}
 			
+		}else if(!GamePanel.userColor.equalsIgnoreCase("Black")){
+			Piece rightRook = GamePanel.computerRightRook;
+			Piece leftRook = GamePanel.computerLeftRook;
+			for (int i = 0; i < copyBlackPieces.length; i++) {
+				for (int j = 0; j < 8; j++) {
+					for (int j2 = 0; j2 < 8; j2++) {    
+						rules.add(new RuleCheckAll());
+						if(rules.get(counter).checkPlayerPossibilities(copyBlackPieces[i], GamePanel.squares[j][j2], rightRook, leftRook, "Computer")) {
+							System.out.println("true counter "+ counter);
+							System.out.println(rules.get(counter).getPieceMoved());
+							counter++;
+						}else {
+							//numbers.add(false);
+							rules.remove(rules.size()-1);
+						}
+					}
+				}
+			}
 		}
 
 		//finds which of the rules objects in rules has the greatestValue. If there are multiple, take a random one.
@@ -118,15 +138,17 @@ public class ComputerTurn {
 				GamePanel.whitePieces = copyWhitePieces;
 			}
 		}
+		for (int i = 0; i < copyBlackPieces.length; i++) {
+			if(rules.get(valueIdx).getPieceMoved() == copyBlackPieces[i]) {
+				if(null != rules.get(valueIdx).getPieceRemoved()) {
+					removePlayerPiece(rules.get(valueIdx).getPieceRemoved());
+				}
+				copyBlackPieces[i].moveTo(copyBlackPieces[i].getSquare(), rules.get(valueIdx).getSquareMovedTo());
+				GamePanel.blackPieces = copyBlackPieces;
+			}
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		
 		

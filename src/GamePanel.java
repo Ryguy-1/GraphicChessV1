@@ -29,6 +29,11 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 
 	public static Piece rightRook;
 	public static Piece leftRook;
+	
+	public static Piece computerLeftRook;
+	public static Piece computerRightRook;
+	
+	
 
 	private boolean pieceClickedBoolean = false;
 
@@ -72,6 +77,8 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 			playerTurn = true;
 		} else {
 			playerTurn = false;
+			c.run();
+			computerDone = false;
 		}
 
 	}
@@ -154,6 +161,10 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 
 			rightRook = whitePieces[15];
 			leftRook = whitePieces[8];
+			
+			computerRightRook = blackPieces[7];
+			computerLeftRook = blackPieces[0];
+			
 
 		} else if (userColor.equalsIgnoreCase("Black")) {
 
@@ -192,6 +203,9 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener {
 
 			rightRook = blackPieces[15];
 			leftRook = blackPieces[8];
+			
+			computerRightRook = whitePieces[7];
+			computerLeftRook = whitePieces[0];
 
 		}
 

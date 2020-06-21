@@ -30,9 +30,6 @@ public class RuleCheckAll {
 		return pieceRemoved;
 	}
 
-	
-	
-	
 	public boolean checkPlayerPossibilities(Piece p, Square movedTo, Piece rightRook, Piece leftRook,
 			String whichPlayer) {
 
@@ -727,12 +724,36 @@ public class RuleCheckAll {
 					return false;
 				}
 
+			} else if (p.getSquare().getJIndex() == 3 && numIdxSide == 2) {
+
+				if (p.kingFirst() == false && leftRook.rookFirst() == false) {
+					if (null == canMove(getLeftSquares(numIdxSide, p))) {
+						leftRook.moveTo(leftRook.getSquare(), GamePanel.squares[7][2]);
+						leftRook.setRookFirst(true);
+						p.setKingFirst(true);
+						return true;
+					}
+				} else {
+					return false;
+				}
+
+			} else if (p.getSquare().getJIndex() == 3 && numIdxSide == -2) {
+
+				if (p.kingFirst() == false && rightRook.rookFirst() == false) {
+					if (null == canMove(getRightSquares(numIdxSide, p))) {
+						rightRook.moveTo(rightRook.getSquare(), GamePanel.squares[7][4]);
+						rightRook.setRookFirst(true);
+						p.setKingFirst(true);
+						return true;
+					}
+
+				} else {
+					return false;
+				}
+
 			} else {
 				return false;
 			}
-
-		} else {
-			return false;
 		}
 		// made me add in.
 		return false;
@@ -1578,6 +1599,33 @@ public class RuleCheckAll {
 						p.setKingFirst(true);
 						return true;
 					}
+				} else {
+					return false;
+				}
+
+			} else if (p.getSquare().getJIndex() == 3 && numIdxSide == 2) {
+
+				if (p.kingFirst() == false && leftRook.rookFirst() == false) {
+					if (null == canMove(getLeftSquares(numIdxSide, p))) {
+						leftRook.moveTo(leftRook.getSquare(), GamePanel.squares[7][2]);
+						leftRook.setRookFirst(true);
+						p.setKingFirst(true);
+						return true;
+					}
+				} else {
+					return false;
+				}
+
+			} else if (p.getSquare().getJIndex() == 3 && numIdxSide == -2) {
+
+				if (p.kingFirst() == false && rightRook.rookFirst() == false) {
+					if (null == canMove(getRightSquares(numIdxSide, p))) {
+						rightRook.moveTo(rightRook.getSquare(), GamePanel.squares[7][4]);
+						rightRook.setRookFirst(true);
+						p.setKingFirst(true);
+						return true;
+					}
+
 				} else {
 					return false;
 				}
