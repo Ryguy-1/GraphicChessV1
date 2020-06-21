@@ -226,7 +226,7 @@ public class RuleCheckAll {
 					p.setRookFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetAbove(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetAbove(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetAbove(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -241,7 +241,7 @@ public class RuleCheckAll {
 					p.setRookFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetBelow(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetBelow(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetBelow(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -257,7 +257,7 @@ public class RuleCheckAll {
 					p.setRookFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetLeftSquares(numIdxSide, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetLeftSquares(numIdxSide, p))
+						&& computerCheckIfOnlyLast(computerGetLeftSquares(numIdxSide, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -272,7 +272,7 @@ public class RuleCheckAll {
 					p.setRookFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetRightSquares(numIdxSide, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetRightSquares(numIdxSide, p))
+						&& computerCheckIfOnlyLast(computerGetRightSquares(numIdxSide, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -397,7 +397,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetUpLeftDiagonal(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetUpLeftDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetUpLeftDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetUpLeftDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -409,7 +409,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetUpRightDiagonal(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetUpRightDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetUpRightDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetUpRightDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -421,7 +421,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetDownLeftDiagonal(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetDownLeftDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetDownLeftDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetDownLeftDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -433,7 +433,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetDownRightDiagonal(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetDownRightDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetDownRightDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetDownRightDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -461,7 +461,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetAbove(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetAbove(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetAbove(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetAbove(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -473,7 +473,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetBelow(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetBelow(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetBelow(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetBelow(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -489,7 +489,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetUpLeftDiagonal(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetUpLeftDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetUpLeftDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetUpLeftDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -501,7 +501,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetUpRightDiagonal(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetUpRightDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetUpRightDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetUpRightDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -513,7 +513,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetDownLeftDiagonal(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetDownLeftDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetDownLeftDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetDownLeftDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -525,7 +525,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetDownRightDiagonal(numIdxAbove, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetDownRightDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetDownRightDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetDownRightDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -539,7 +539,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetLeftSquares(numIdxSide, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetLeftSquares(numIdxSide, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetLeftSquares(numIdxSide, p))
+						&& computerCheckIfOnlyLast(computerGetLeftSquares(numIdxSide, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -552,7 +552,7 @@ public class RuleCheckAll {
 				if (null == computerCanMove(computerGetRightSquares(numIdxSide, p))) {
 					return true;
 				} else if (movedTo == computerCanMove(computerGetRightSquares(numIdxSide, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetRightSquares(numIdxSide, p))
+						&& computerCheckIfOnlyLast(computerGetRightSquares(numIdxSide, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					valueAdded += movedTo.getPiece().getValue();
@@ -581,7 +581,7 @@ public class RuleCheckAll {
 					p.setKingFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetAbove(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetAbove(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetAbove(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					p.setKingFirst(true);
@@ -596,7 +596,7 @@ public class RuleCheckAll {
 					p.setKingFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetBelow(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetBelow(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetBelow(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					p.setKingFirst(true);
@@ -616,7 +616,7 @@ public class RuleCheckAll {
 					p.setKingFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetUpLeftDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetUpLeftDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetUpLeftDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					p.setKingFirst(true);
@@ -630,7 +630,7 @@ public class RuleCheckAll {
 					p.setKingFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetUpRightDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetUpRightDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetUpRightDiagonal(numIdxAbove, p))
 						&& !movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					p.setKingFirst(true);
@@ -644,7 +644,7 @@ public class RuleCheckAll {
 					p.setKingFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetDownLeftDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetDownLeftDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetDownLeftDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					p.setKingFirst(true);
@@ -658,7 +658,7 @@ public class RuleCheckAll {
 					p.setKingFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetDownRightDiagonal(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetDownRightDiagonal(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetDownRightDiagonal(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					p.setKingFirst(true);
@@ -678,7 +678,7 @@ public class RuleCheckAll {
 					p.setKingFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetLeftSquares(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetLeftSquares(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetLeftSquares(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					p.setKingFirst(true);
@@ -693,7 +693,7 @@ public class RuleCheckAll {
 					p.setKingFirst(true);
 					return true;
 				} else if (movedTo == computerCanMove(computerGetRightSquares(numIdxAbove, p))
-						&& movedTo.getPiece() == computerCheckIfOnlyLast(computerGetRightSquares(numIdxAbove, p))
+						&& computerCheckIfOnlyLast(computerGetRightSquares(numIdxAbove, p))
 						&& movedTo.getPiece().getColor().equalsIgnoreCase(GamePanel.userColor)) {
 					pieceRemoved = movedTo.getPiece();
 					p.setKingFirst(true);
@@ -930,14 +930,14 @@ public class RuleCheckAll {
 
 	}
 
-	private Piece computerCheckIfOnlyLast(Square[] a) {
+	private boolean computerCheckIfOnlyLast(Square[] a) {
 
 		for (int i = 0; i < a.length; i++) {
 			if (i != a.length - 1 && a[i].hasPlayer()) {
-				return a[i].getPiece();
+				return false;
 			}
 		}
-		return null;
+		return true;
 
 	}
 

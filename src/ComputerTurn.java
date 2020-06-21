@@ -59,29 +59,41 @@ public class ComputerTurn {
 			}
 			
 		}
-		int valueIdx = 0;
 
-		ArrayList<Integer> highIntIdxs = new ArrayList<Integer>();
+		//finds which of the rules objects in rules has the greatestValue. If there are multiple, take a random one.
+		int valueIdx = 0;
+		ArrayList<Integer> valueIdxs = new ArrayList<Integer>();
 		
 		for (int i = 0; i < rules.size(); i++) {
-			if(rules.get(i).getValueAdded()>=rules.get(valueIdx).getValueAdded()) {
+			System.out.println("value added for index "+ i + " is " + rules.get(i).getValueAdded() + ". Moving Piece " + rules.get(i).getPieceMoved().getSource() + " to [" + rules.get(i).getSquareMovedTo().getIIndex() + "][" + rules.get(i).getSquareMovedTo().getJIndex() +"]");
+			if(rules.get(i).getValueAdded() >= rules.get(valueIdx).getValueAdded()) {
 				valueIdx = i;
-				highIntIdxs.add(i);
+				valueIdxs.add(valueIdx);
 			}
 		}
-		ArrayList<Integer> idxs = new ArrayList<Integer>();
-		System.out.println("maxedIntIdxs.size() = " + highIntIdxs.size());
-		//System.out.println("temp value is "+tempValue);
-		for (int i = 0; i < highIntIdxs.size(); i++) {
-			//System.out.println(highIntIdxs.get(i));
-			//System.out.println("valueIdx = "+valueIdx);
-			if(rules.get(highIntIdxs.get(i)).getValueAdded()==rules.get(valueIdx).getValueAdded()) {
-				idxs.add(i);
-				System.out.println("added to idxs");
+		int tempLargest = valueIdx;
+		System.out.println("value added = " + rules.get(valueIdx).getValueAdded());
+		System.out.println("valueIdxs size = " + valueIdxs.size());
+		for (int i = 0; i < valueIdxs.size(); i++) {
+			System.out.println("Index "+ i + " of valueIdxs before has the value of "+ rules.get(valueIdxs.get(i)).getValueAdded());
+		}
+		ArrayList<Integer> trueValues = new ArrayList<Integer>();
+		for (int i = 0; i < valueIdxs.size(); i++) {
+			if(rules.get(tempLargest).getValueAdded() == rules.get(valueIdxs.get(i)).getValueAdded()) {
+				trueValues.add(valueIdxs.get(i));
+			}else {
+				
 			}
 		}
-		Random r = new Random();
-		valueIdx = idxs.get(r.nextInt(idxs.size()));
+		
+		System.out.println("trueValues size = " + trueValues.size());
+		
+		valueIdx = trueValues.get(new Random().nextInt(trueValues.size()));
+		
+		
+		
+		
+		
 		
 		
 		System.out.println("rules size is " + rules.size());
